@@ -49,10 +49,10 @@ jobs:
           new_version = '${UPSTREAM_TAG}'
           if current >= upstream:
               print('VERSION_SKIP=true')
-              print(f'Version {current} >= {upstream} — no update needed')
+              print(f'Version {current} >= {upstream} - no update needed')
           else:
               print('VERSION_SKIP=false')
-              print(f'Version {current} < {upstream} — update required')
+              print(f'Version {current} < {upstream} - update required')
           print('UPSTREAM_TAG=${UPSTREAM_TAG}')
           print('NEW_VERSION=${UPSTREAM_TAG}')
           " >> $GITHUB_OUTPUT
