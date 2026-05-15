@@ -43,16 +43,17 @@ jobs:
 
           # Compare versions
           python3 -c "
+          import sys
           from packaging import version
           current = version.parse('$CURRENT_VERSION')
           upstream = version.parse('${UPSTREAM_TAG}')
           new_version = '${UPSTREAM_TAG}'
           if current >= upstream:
               print('VERSION_SKIP=true')
-              print(f'Version {current} >= {upstream} - no update needed')
+              print(f'Version {current} >= {upstream} - no update needed', file=sys.stderr)
           else:
               print('VERSION_SKIP=false')
-              print(f'Version {current} < {upstream} - update required')
+              print(f'Version {current} < {upstream} - update required', file=sys.stderr)
           print('UPSTREAM_TAG=${UPSTREAM_TAG}')
           print('NEW_VERSION=${UPSTREAM_TAG}')
           " >> $GITHUB_OUTPUT
